@@ -59,7 +59,7 @@
     <meta name="twitter:description"
         content="Building Africa's Digital Future with HavenByte (HBT) utility token powering our ecosystem of products.">
     
-    <meta name="twitter:image" content="https://bytehaven.world/images/byteHaven_logo.webp">
+    <meta name="twitter:image" content="https://havenbyte.bytehaven.world/images/havenbytelogo.webp">
     
     <!-- Change to your actual logo URL -->
     
@@ -86,14 +86,6 @@
     <!-- link for the styles  and scripts-->
     <script type="module" src="scripts/base.mjs"></script>
     
-    <!-- Privacy-friendly analytics by Plausible -->
-    
-    <script async src="https://plausible.io/js/pa-8hZq6-XCeCA2nCx-Jv2EG.js"></script>
-    <script>
-        window.plausible = window.plausible || function () { (plausible.q = plausible.q || []).push(arguments) }, plausible.init = plausible.init || function (i) { plausible.o = i || {} };
-        plausible.init()
-    </script>
-    
     
     <link rel="stylesheet" href="styles/base.css">
 </head>
@@ -101,23 +93,41 @@
 <body>
 
     <header>
+
+        <img src="images/havenbytelogo.webp" alt="HavenByte Logo" width="16" height="16">
+        
+        <span>
+        
+            HavenByte Token (HBT)
+        
+        </span>
+        
+        <button id="dark-mode-toggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+
         <nav>
             <div class="logo">HBT</div>
+
             <div>SocialFi Token</div>
+
         </nav>
+
     </header>
 
     <section class="hero">
+
         <h1>HBT Tokenomics</h1>
-        <p>Powering the Next Generation Social Media Platform</p>
+
+        <p>Powering ByteHaven's Ecosystem</p>
+
     </section>
 
     <section class="tokenomics-section">
+
         <h2>Token Distribution</h2>
 
         <!-- Pie Chart Image -->
         <div class="pie-container">
-            <img src="https://i.imgur.com/YourPieChartLink.jpg" alt="HBT Tokenomics Pie Chart" width="650">
+            <img src="images/hbt tokenomics.webp" alt="HBT Tokenomics Chart">
             <!-- Replace the link above with your actual pie chart image later -->
         </div>
 
@@ -148,7 +158,7 @@
                         <td>Private Sale / ICO</td>
                         <td><strong>18%</strong></td>
                         <td>180,000,000</td>
-                        <td>₦0.65 per token</td>
+                        <td>₦0.70/$0.00051 per token</td>
                     </tr>
                     <tr>
                         <td>Community / Public</td>
@@ -192,7 +202,24 @@
     </section>
 
     <footer>
-        <p>&copy; 2026 HBT SocialFi Platform. All Rights Reserved.</p>
+    
+        </div>
+    
+        <hr>
+    
+        <div id="live-clock"></div>
+    
+        <div id="year-date">
+    
+            <p>
+                &copy; <span id="currentyear"></span>
+                ByteHaven Tech Solutions Ltd Development Team
+            </p>
+    
+            <p><span id="lastModified"></span></p>
+    
+        </div>
+    
     </footer>
 
 </body>
