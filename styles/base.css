@@ -1,5 +1,5 @@
 :root {
-    /* Light mode defaults */
+    /* Light mode */
     --bg: #ffffff;
     --text: #1a1a1a;
     --text-muted: #666666;
@@ -9,6 +9,13 @@
     --hover: #f1f1f1;
     --emerald: #10b981;
     --gold: #fbbf24;
+
+    /* Spacing scale */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2.5rem;
+    --space-xl: 4rem;
 }
 
 body.dark-mode {
@@ -27,112 +34,159 @@ body.dark-mode {
     box-sizing: border-box;
 }
 
+/* ==================== BASE TEXT (MOBILE FIRST) ==================== */
+html {
+    font-size: 16px;
+}
+
 body {
     font-family: 'Roboto', system-ui, sans-serif;
     background: var(--bg);
     color: var(--text);
-    line-height: 1.6;
+
+    /* CRITICAL READABILITY FIX */
+    font-size: clamp(1.05rem, 4vw, 1.125rem);
+    line-height: 1.75;
+
     transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* ==================== HEADER ==================== */
 header {
     background: var(--header-bg);
-    padding: 1.5rem 5%;
+    padding: 1.25rem 5%;
     border-bottom: 1px solid var(--emerald);
-
-    nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
 }
 
-/* Theme Toggle */
-.theme-toggle {
-    background: none;
-    border: none;
-    font-size: 1.8rem;
-    cursor: pointer;
-    color: var(--emerald);
-    transition: transform 0.3s ease;
-
-    &:hover {
-        transform: rotate(30deg);
-    }
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    gap: 1rem;
 }
 
 .logo {
-    font-size: 1.8rem;
+    font-size: clamp(1.7rem, 5vw, 2rem);
     font-weight: 700;
+    line-height: 1.2;
     color: var(--emerald);
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.9rem;
+    cursor: pointer;
+    color: var(--emerald);
+
+    /* Proper touch target */
+    min-width: 44px;
+    min-height: 44px;
 }
 
 /* ==================== HERO ==================== */
 .hero {
     text-align: center;
-    padding: 100px 20px;
-    background: linear-gradient(rgba(16, 185, 129, 0.08), transparent);
+    padding: clamp(4.5rem, 10vw, 6.5rem) 1rem;
+    background: linear-gradient(to bottom,
+            rgba(16, 185, 129, 0.12),
+            transparent);
+}
 
-    h1 {
-        font-size: 3.5rem;
-        margin-bottom: 1rem;
-        color: var(--gold);
-    }
+.hero h1 {
+    font-size: clamp(2.6rem, 7vw, 3.5rem);
+    margin-bottom: var(--space-sm);
+    color: var(--gold);
+    line-height: 1.15;
+}
+
+.hero p {
+    max-width: 640px;
+    margin: 0 auto;
+    color: var(--text-muted);
+
+    font-size: clamp(1.05rem, 4vw, 1.15rem);
+    line-height: 1.8;
 }
 
 /* ==================== TOKENOMICS ==================== */
 .tokenomics-section {
-    padding: 80px 5%;
-    max-width: 1200px;
+    padding: var(--space-xl) 5%;
+    max-width: 1100px;
     margin: 0 auto;
-
-    h2 {
-        text-align: center;
-        margin-bottom: 3rem;
-        color: var(--emerald);
-        font-size: 2.5rem;
-    }
 }
 
+.tokenomics-section h2 {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+    color: var(--emerald);
+
+    font-size: clamp(2rem, 5.5vw, 2.6rem);
+    line-height: 1.25;
+}
+
+/* ==================== TABLE CONTAINERS ==================== */
 .table-container {
     background: var(--card-bg);
     border-radius: 16px;
-    padding: 30px;
-    margin-bottom: 60px;
-    overflow-x: auto;
+    padding: clamp(1rem, 3vw, 2rem);
+    margin-bottom: var(--space-xl);
     border: 1px solid var(--border);
+
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile swipe hint */
+.table-container::after {
+    content: "← Swipe table →";
+    display: none;
+    font-size: 0.9rem;
+    text-align: center;
+    color: var(--text-muted);
+    margin-top: 0.75rem;
+}
+
+@media (max-width: 768px) {
+    .table-container::after {
+        display: block;
+    }
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-
-    th,
-    td {
-        padding: 16px;
-        text-align: left;
-        border-bottom: 1px solid var(--border);
-    }
-
-    th {
-        color: var(--emerald);
-        font-weight: 500;
-    }
-
-    tr:hover {
-        background: var(--hover);
-    }
+    min-width: 640px;
 }
 
+th,
+td {
+    padding: 0.9rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+
+    font-size: clamp(0.95rem, 3.5vw, 1.05rem);
+}
+
+th {
+    color: var(--emerald);
+    font-weight: 600;
+}
+
+tr:hover {
+    background: var(--hover);
+}
+
+/* ==================== PIE CHART ==================== */
 .pie-container {
     display: flex;
     justify-content: center;
-    margin: 40px 0;
+    align-items: center;
+    margin: var(--space-lg) 0;
     background: var(--card-bg);
-    padding: 30px;
+    padding: clamp(1rem, 3vw, 2rem);
     border-radius: 16px;
     border: 1px solid var(--border);
 }
@@ -140,46 +194,10 @@ table {
 /* ==================== FOOTER ==================== */
 footer {
     text-align: center;
-    padding: 40px;
+    padding: var(--space-lg) var(--space-sm);
     color: var(--text-muted);
     border-top: 1px solid var(--border);
-}
 
-/* ==================== RESPONSIVE ==================== */
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.8rem;
-    }
-
-    h2 {
-        font-size: 2.1rem;
-    }
-
-    header {
-        padding: 1rem 5%;
-    }
-
-    .tokenomics-section {
-        padding: 60px 5%;
-    }
-
-    .table-container {
-        padding: 20px;
-    }
-
-    th,
-    td {
-        padding: 12px 8px;
-        font-size: 0.95rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero {
-        padding: 80px 15px;
-    }
-
-    .hero h1 {
-        font-size: 2.4rem;
-    }
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
